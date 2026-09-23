@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lebero Brownies | Feito para adoçar seu dia</title>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Emilys+Candy&display=swap" rel="stylesheet">
+  <meta name="description" content="Lebero Brownies — brownies artesanais, cremosos e feitos com carinho.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            lebero: {
+              black: '#080808',
+              pink: '#FF1493',
+              pinkSoft: '#FF4FC3',
+              pinkDark: '#E60083',
+              white: '#FFFFFF'
+            }
+          },
+          fontFamily: {
+            display: ['Emilys Candy', 'serif'],
+            body: ['Arial', 'sans-serif']
+          },
+          boxShadow: {
+            soft: '0 18px 45px rgba(0,0,0,.45)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #080808; color: #FFFFFF; }
+    .grain { position: relative; overflow: hidden; }
+    .grain::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .12;
+      background-image: radial-gradient(#FF1493 0.6px, transparent 0.6px);
+      background-size: 7px 7px;
+    }
+    .brownie {
+      background: linear-gradient(145deg, #ff1493, #9b005e 65%);
+      box-shadow: inset 0 4px 0 rgba(255,255,255,.08), 0 14px 25px rgba(255,20,147,.28);
+    }
+    .brownie::after {
+      content: ''; position: absolute; left: 10%; right: 10%; top: 18%; height: 9px;
+      border-radius: 999px; background: rgba(255,255,255,.65); transform: rotate(-5deg);
+      box-shadow: 30px 17px 0 rgba(255,255,255,.25), -25px 25px 0 rgba(255,234,235,.15);
+    }
+    .nav-link { transition: .2s ease; }
+    .nav-link:hover { color: #FF1493; transform: translateY(-1px); }
+    .product-card { transition: .25s ease; }
+    .product-card:hover { transform: translateY(-7px); box-shadow: 0 22px 50px rgba(255,20,147,.20); }
+    .cart-bump { animation: bump .25s ease; }
+    @keyframes bump { 50% { transform: scale(1.18); } }
+
+    /* Identidade visual Lebero: rosa pink + preto */
+    .pink-section-text { color: #080808; }
+  </style>
+</head>
+<body class="font-body">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-50 border-b border-lebero-black/10 bg-lebero-black/95 backdrop-blur">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
+      <a href="#inicio" class="flex items-center gap-3">
+        <img src="assets/lebero.png" alt="Logo Lebero Brownies" class="h-12 w-12 rounded-full object-cover ring-2 ring-lebero-pink">
+        <div class="leading-none">
+          <span class="font-display text-xl font-bold">LEBERO</span>
+          <span class="block text-xs font-bold tracking-[.25em] text-lebero-pink">BROWNIES</span>
+        </div>
+      </a>
+      <div class="hidden items-center gap-7 md:flex">
+        <a class="nav-link font-semibold text-white" href="#inicio">Início</a>
+        <a class="nav-link font-semibold text-white" href="#sabores">Sabores</a>
+        <a class="nav-link font-semibold text-white" href="#sobre">Sobre nós</a>
+        <a class="nav-link font-semibold text-white" href="#contato">Contato</a>
+      </div>
+      <button onclick="openCart()" class="relative rounded-full bg-lebero-black px-4 py-2.5 font-bold text-white transition hover:bg-lebero-black">
+        🛒 <span class="hidden sm:inline">Meu pedido</span>
+        <span id="cartCount" class="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-lebero-pink text-xs font-black text-lebero-black">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section id="inicio" class="grain relative bg-lebero-black text-white">
+      <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:grid-cols-2 md:py-24">
+        <div>
+          <span class="mb-5 inline-flex rounded-full bg-lebero-pink px-4 py-2 text-sm font-black text-lebero-black">🍫 FEITO COM CARINHO</span>
+          <h1 class="font-display text-5xl font-black leading-[.95] sm:text-6xl lg:text-7xl">
+            Um pedacinho de felicidade em cada <span class="text-lebero-pink">brownie.</span>
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-relaxed text-lebero-white/85">
+            Brownies artesanais, chocolatudos e preparados para deixar qualquer momento mais gostoso.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#sabores" class="rounded-full bg-lebero-pink px-7 py-3.5 font-black text-lebero-black transition hover:-translate-y-1 hover:bg-lebero-black">Ver sabores</a>
+            <a href="#sobre" class="rounded-full border border-white/30 px-7 py-3.5 font-bold transition hover:bg-lebero-black/10">Conheça a Lebero</a>
+          </div>
+          <div class="mt-9 flex flex-wrap gap-6 text-sm text-lebero-white/80">
+            <span>✓ Produção artesanal</span>
+            <span>✓ Ingredientes selecionados</span>
+            <span>✓ Muito chocolate</span>
+          </div>
+        </div>
+
+        <div class="relative mx-auto w-full max-w-md">
+          <div class="absolute -inset-5 rounded-[3rem] bg-lebero-pink/20 blur-2xl"></div>
+          <div class="relative rounded-[3rem] border border-white/10 bg-lebero-black p-5 shadow-2xl">
+            <img src="assets/lebero.png" alt="Lebero Brownies" class="w-full rounded-[2.4rem] object-cover">
+            <div class="absolute -bottom-4 -right-4 rotate-3 rounded-2xl bg-lebero-pink px-5 py-3 font-black text-lebero-black shadow-xl">Irresistível! ♡</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SABORES -->
+    <section id="sabores" class="mx-auto max-w-6xl px-5 py-20">
+      <div class="mb-10 text-center">
+        <span class="font-bold uppercase tracking-[.25em] text-lebero-pinkDark">Nosso cardápio</span>
+        <h2 class="mt-2 font-display text-4xl font-black sm:text-5xl">Escolha seu favorito :D</h2>
+        <p class="mx-auto mt-4 max-w-2xl text-white/65">Brownies com aquela casquinha por fora e o centro macio que dá vontade de repetir.</p>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <article class="product-card overflow-hidden rounded-3xl bg-lebero-black border border-lebero-pink/20 shadow-soft">
+          <div class="h-48 overflow-hidden bg-lebero-pink/20">
+            <img 
+              src="assets/foto1.jpeg"
+              alt="Brownie Tradicional"
+              class="h-full w-full object-cover"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-2xl font-bold text-white">Tradicional</h3>
+            <p class="mt-2 min-h-12 text-sm text-white/60">Chocolate intenso e textura super cremosa.</p>
+            <div class="mt-5 flex items-center justify-between">
+              <strong class="text-xl">R$ 8,00</strong>
+              <button onclick="addToCart('Brownie Tradicional', 8)" class="rounded-full bg-lebero-pink px-4 py-2 text-sm font-bold text-lebero-black hover:bg-lebero-pinkDark">Adicionar</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card overflow-hidden rounded-3xl bg-lebero-black border border-lebero-pink/20 shadow-soft">
+          <div class="h-48 overflow-hidden bg-lebero-pink/20">
+            <img 
+              src="assets/foto2.jpg"
+              alt="Brownie Tradicional"
+              class="h-full w-full object-cover"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-2xl font-bold text-white">Meio Amargo</h3>
+            <p class="mt-2 min-h-12 text-sm text-white/60">Brownie quase chocolatudo.</p>
+            <div class="mt-5 flex items-center justify-between">
+              <strong class="text-xl">R$ 10,00</strong>
+              <button onclick="addToCart('Brownie Ninho', 10)" class="rounded-full bg-lebero-pink px-4 py-2 text-sm font-bold text-lebero-black hover:bg-lebero-pinkDark">Adicionar</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card overflow-hidden rounded-3xl bg-lebero-black border border-lebero-pink/20 shadow-soft">
+          <div class="h-48 overflow-hidden bg-lebero-pink/20">
+            <img 
+              src="assets/foto3.jpg"
+              alt="Brownie Tradicional"
+              class="h-full w-full object-cover"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-2xl font-bold text-white">Nutella</h3>
+            <p class="mt-2 min-h-12 text-sm text-white/60">Uma combinação cremosa para quem ama chocolate.</p>
+            <div class="mt-5 flex items-center justify-between">
+              <strong class="text-xl">R$ 12,00</strong>
+              <button onclick="addToCart('Brownie Nutella', 12)" class="rounded-full bg-lebero-pink px-4 py-2 text-sm font-bold text-lebero-black hover:bg-lebero-pinkDark">Adicionar</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card overflow-hidden rounded-3xl bg-lebero-black border border-lebero-pink/20 shadow-soft">
+          <div class="h-48 overflow-hidden bg-lebero-pink/20">
+            <img 
+              src="assets/foto4.jpg"
+              alt="Brownie Tradicional"
+              class="h-full w-full object-cover"
+            >
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-2xl font-bold text-white">Especial Lebero</h3>
+            <p class="mt-2 min-h-12 text-sm text-white/60">Nossa criação especial para transformar seu dia.</p>
+            <div class="mt-5 flex items-center justify-between">
+              <strong class="text-xl">R$ 14,00</strong>
+              <button onclick="addToCart('Brownie Especial Lebero', 14)" class="rounded-full bg-lebero-pink px-4 py-2 text-sm font-bold text-lebero-black hover:bg-lebero-pinkDark">Adicionar</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- DESTAQUE -->
+    <section class="bg-lebero-pink pink-section-text">
+      <div class="mx-auto grid max-w-6xl items-center gap-8 px-5 py-14 md:grid-cols-2">
+        <div>
+          <span class="font-black uppercase tracking-[.2em] text-lebero-black/60">Por que Lebero?</span>
+          <h2 class="mt-2 font-display text-4xl font-black sm:text-5xl">Fazemos tudo com carinho.<br>Sabor nostálgico.</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="rounded-3xl bg-lebero-black/75 p-5"><div class="text-3xl">
+            <img src="./assets/hellokitty1.jpg" alt="">
+          </div><h3 class="mt-3 font-bold">Muito chocolate</h3><p class="mt-1 text-sm text-white/60">Sabor marcante em cada mordida.</p></div>
+          <div class="rounded-3xl bg-lebero-black/75 p-5"><div class="text-3xl">
+            <img src="./assets/hellokitty2.jpg" alt="">
+          </div><h3 class="mt-3 font-bold">Artesanal</h3><p class="mt-1 text-sm text-white/60">Produzido com atenção aos detalhes.</p></div>
+          <div class="rounded-3xl bg-lebero-black/75 p-5"><div class="text-3xl">
+            <img src="./assets/hellokitty3.jpg" alt="">
+          </div><h3 class="mt-3 font-bold">Feito com carinho</h3><p class="mt-1 text-sm text-white/60">Para deixar seus momentos especiais.</p></div>
+          <div class="rounded-3xl bg-lebero-black/75 p-5"><div class="text-3xl">
+            <img src="./assets/hellokitty4.jpg" alt="">
+          </div><h3 class="mt-3 font-bold">Qualidade</h3><p class="mt-1 text-sm text-white/60">Ingredientes escolhidos para você.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="mx-auto max-w-6xl px-5 py-20">
+      <div class="grid items-center gap-12 md:grid-cols-2">
+        <div class="relative">
+          <div class="absolute -left-4 -top-4 h-full w-full rounded-[2.5rem] bg-lebero-pink"></div>
+          <img src="assets/lebero.png" alt="Identidade visual da Lebero Brownies" class="relative rounded-[2.5rem] shadow-soft">
+        </div>
+        <div>
+          <span class="font-bold uppercase tracking-[.25em] text-lebero-pinkDark">Sobre a Lebero</span>
+          <h2 class="mt-2 font-display text-4xl font-black sm:text-5xl">Brownie bom é aquele que faz você sorrir.</h2>
+          <p class="mt-6 leading-8 text-white/70">A Lebero Brownies nasceu para transformar um doce simples em uma experiência especial. Nossa proposta é oferecer brownies artesanais, com muito chocolate, cuidado no preparo e uma identidade divertida e marcante.</p>
+          <p class="mt-4 leading-8 text-white/70">Seja para matar aquela vontade de doce, presentear alguém ou compartilhar com os amigos, tem sempre um brownie esperando por você.</p>
+          <a href="#contato" class="mt-7 inline-block rounded-full bg-lebero-black px-7 py-3.5 font-bold text-white transition hover:bg-lebero-black">Quero pedir →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="bg-lebero-black text-white">
+      <div class="mx-auto max-w-6xl px-5 py-16 text-center">
+        <span class="font-bold uppercase tracking-[.25em] text-lebero-pink">Fale com a gente</span>
+        <h2 class="mt-2 font-display text-4xl font-black sm:text-5xl">Seu próximo brownie está aqui.</h2>
+        <p class="mx-auto mt-4 max-w-xl text-lebero-white/75">Faça seu pedido e descubra seu novo sabor favorito.</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <!-- Troque o número abaixo pelo WhatsApp da empresa -->
+          <a href="https://wa.me/5511948373723?text=Olá!%20Quero%20fazer%20um%20pedido%20na%20Lebero%20Brownies." target="_blank" class="rounded-full bg-lebero-pink px-7 py-3.5 font-black text-lebero-black transition hover:bg-lebero-black">WhatsApp 💬</a>
+          <a href="mailto:contato@leberobrownies.com" class="rounded-full border border-white/20 px-7 py-3.5 font-bold transition hover:bg-lebero-black/10">E-mail ✉</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-lebero-black border-t border-white/10 px-5 py-7 text-center text-sm text-lebero-white/60">
+    <p>© 2026 Lebero Brownies. Feito com chocolate e carinho. 🍫♡</p>
+  </footer>
+
+  <!-- CART MODAL -->
+  <div id="cartModal" class="fixed inset-0 z-[60] hidden items-end justify-center bg-lebero-black/60 p-0 backdrop-blur-sm sm:items-center sm:p-5">
+    <div class="w-full max-w-lg rounded-t-3xl bg-lebero-black p-6 shadow-2xl sm:rounded-3xl">
+      <div class="flex items-center justify-between">
+        <div><span class="text-sm font-bold uppercase tracking-widest text-lebero-pinkDark">Seu pedido</span><h2 class="font-display text-3xl font-black">Carrinho 🛒</h2></div>
+        <button onclick="closeCart()" class="rounded-full bg-lebero-black/10 px-3 py-2 text-xl">×</button>
+      </div>
+      <div id="cartItems" class="my-6 max-h-64 space-y-3 overflow-auto"></div>
+      <div class="flex items-center justify-between border-t border-lebero-black/10 pt-4"><span class="font-bold">Total</span><strong id="cartTotal" class="text-2xl">R$ 0,00</strong></div>
+      <button onclick="sendOrder()" class="mt-5 w-full rounded-full bg-lebero-black py-3.5 font-black text-white hover:bg-lebero-black">Finalizar pelo WhatsApp →</button>
+      <p class="mt-3 text-center text-xs text-white/50">O número do WhatsApp pode ser alterado no código.</p>
+    </div>
+  </div>
+
+  <script>
+    const cart = [];
+    const money = value => value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    function addToCart(name, price) {
+      const item = cart.find(i => i.name === name);
+      if (item) item.qty++;
+      else cart.push({ name, price, qty: 1 });
+      renderCart();
+      const badge = document.getElementById('cartCount');
+      badge.classList.remove('cart-bump'); void badge.offsetWidth; badge.classList.add('cart-bump');
+    }
+
+    function removeFromCart(name) {
+      const item = cart.find(i => i.name === name);
+      if (!item) return;
+      item.qty--;
+      if (item.qty <= 0) cart.splice(cart.indexOf(item), 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      const count = cart.reduce((sum, i) => sum + i.qty, 0);
+      const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+      document.getElementById('cartCount').textContent = count;
+      document.getElementById('cartTotal').textContent = money(total);
+
+      if (!cart.length) {
+        container.innerHTML = '<div class="rounded-2xl bg-lebero-black/80 p-6 text-center text-white/50">Seu carrinho está vazio.<br>Escolha um brownie delicioso! 🍫</div>';
+        return;
+      }
+      container.innerHTML = cart.map(i => `
+        <div class="flex items-center justify-between rounded-2xl bg-lebero-black/90 p-4">
+          <div><p class="font-bold">${i.name}</p><p class="text-sm text-white/50">${money(i.price)} cada</p></div>
+          <div class="flex items-center gap-3"><button onclick="removeFromCart('${i.name}')" class="h-8 w-8 rounded-full bg-lebero-black/10 font-bold">−</button><b>${i.qty}</b><button onclick="addToCart('${i.name}', ${i.price})" class="h-8 w-8 rounded-full bg-lebero-pink font-bold">+</button></div>
+        </div>`).join('');
+    }
+
+    function openCart() { renderCart(); document.getElementById('cartModal').classList.remove('hidden'); document.getElementById('cartModal').classList.add('flex'); }
+    function closeCart() { document.getElementById('cartModal').classList.add('hidden'); document.getElementById('cartModal').classList.remove('flex'); }
+
+    function sendOrder() {
+      if (!cart.length) return alert('Adicione pelo menos um brownie ao carrinho!');
+      const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+      const lines = cart.map(i => `${i.qty}x ${i.name} — ${money(i.price * i.qty)}`).join('\n');
+      const message = `Olá! Quero fazer um pedido na Lebero Brownies 😊\n\n${lines}\n\nTotal: ${money(total)}`;
+      window.open('https://wa.me/5511999999999?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>
